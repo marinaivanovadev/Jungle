@@ -8,6 +8,10 @@
     <div>
       <h1><%= @product.name %></h1>
       <p><%= @product.description %></p>
+    
+      <% if @product.quantity.zero? %>
+        <span class="badge badge-danger">Sold Out</span>
+      <% else %>
       <div class="quantity">
         <span><%= @product.quantity %> in stock at </span>
         <span><%= number_to_currency(@product.price, precision: 2) %></span>
@@ -17,6 +21,7 @@
           <%= fa_icon "shopping-cart", text: 'Add' %>
         <% end %>          
       </div>
+      <% end %>
     </div>
   </article>
 
