@@ -1,0 +1,33 @@
+<section class="admin-dashboard">
+  <header class="page-header">
+    <h1>Admin Dashboard</h1>
+    </header>
+
+  <div class="dashboard-stats">
+    <div class="card mb-3">
+      <div class="card-header">
+        <h5 class="card-title">Product Count</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <%= link_to admin_products_path, class: 'text-decoration-none' do %>
+            <%= @product_count %> Products
+          <% end %>
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Category Count</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <%= link_to admin_categories_path, class: 'text-decoration-none' do %>
+            <%= @category_count %> Categories
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
