@@ -28,6 +28,15 @@ get '/about', to: 'about#index', as: 'about'
     resources :categories, only: [:index, :new, :create]
   end
 
+ resources :users, only: [:new, :create]
+  get 'signup', to: 'users#new'
+  
+  resources :sessions, only: [:new, :create, :destroy]
+  get 'login', to: 'sessions#new'
+  get 'logout', to: 'sessions#destroy'
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
