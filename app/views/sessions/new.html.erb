@@ -1,5 +1,14 @@
-<h1>Login</h1>
-<%= form_tag sessions_path do %>
+<h1 class='text-center'>Log in</h1>
 
-  <%= submit_tag 'Login' %>
-<% end %>
+<div class="row">
+  <div class="col-md-6 offset-3">
+    <%= form_for :user, url: '/login' do |f| %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.submit "Log in", class: " mt-2 btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

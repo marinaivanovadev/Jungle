@@ -28,10 +28,21 @@ get '/about', to: 'about#index', as: 'about'
     resources :categories, only: [:index, :new, :create]
   end
 
- resources :users, only: [:new, :create]
-  get 'signup', to: 'users#new'
-  
-  resources :sessions, only: [:new, :create, :destroy]
+ resources :users, only: [:new, :create, :show]
+    get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+get 'sessions/new'
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
+  get '/login' => 'sessions#new' 
+  post '/login' => 'sessions#create' 
+  get '/logout' => 'sessions#destroy'
+  resources :sessions, only: [:new, :create]
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#destroy'
 
