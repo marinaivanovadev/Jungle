@@ -68,8 +68,40 @@ describe 'Validations' do
       expect(user).to_not be_valid
       expect(user.errors.full_messages).to include('Email has already been taken')
     end
+    
+    it 'is invalid without a first name' do
+      user = User.new(
+        last_name: 'Ivanova',
+        email:  'marina.ivanova.ca@gmail.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+      expect(user).to_not be_valid
+      expect(user.errors.full_messages).to include("First name can't be blank")
+    end
+    
+    it 'is invalid without a last name' do
+      user = User.new(
+        first_name: 'Marina',
+        email: 'Marina.ivanova.ca@gmail.com',
+        password: 'password2',
+        password_confirmation: 'password2',
+      )
+      expect(user).to_not be_valid
+      expect(user.errors.full_messages).to include("Last name can't be blank")
+    end
 
-
+    it 'is invalid with a password less than 8 characters' do
+      user = User.new(
+        first_name: 'Marina',
+        last_name: 'Ivanova',
+        email:  'marina.ivanova.ca@gmail.com',
+        password: 'new',
+        password_confirmation: 'new'
+      )
+      expect(user).to_not be_valid
+      expect(user.errors.full_messages).to include('Password is too short (minimum is 8 characters)')
+    end
 
   end
 end
